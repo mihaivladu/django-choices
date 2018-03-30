@@ -41,8 +41,9 @@ class Comment(models.Model):
         ('P', 'Post'),
         ('V', 'Video')
     )
+
     target_type = models.CharField(max_length=1, choices=TARGET_TYPE_CHOICES)
-    target_id = models.IntegerField()
+    target_id = models.ForeignKey(Video, on_delete=models.CASCADE)
     text = models.TextField(default='')
 
     def __str__(self):
